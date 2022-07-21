@@ -7,6 +7,7 @@ public class GameController : MonoBehaviour
 {
 
     public player player;
+    public EnemyControllerAI enemy;
     public float resetTimer = 10f;
 
 	
@@ -18,7 +19,7 @@ public class GameController : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-		if(player.holdingBall == false)
+		if(player.holdingBall == false && enemy.holdingBall== false)
         {
             resetTimer -= Time.deltaTime;
             if(resetTimer <= 0)
