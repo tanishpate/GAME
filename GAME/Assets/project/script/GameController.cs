@@ -7,7 +7,7 @@ public class GameController : MonoBehaviour
 {
 
     public player player;
-    public float resetTimer = 5f;
+    public float resetTimer = 10f;
 
 	
 
@@ -25,6 +25,9 @@ public class GameController : MonoBehaviour
             {
                 SceneManager.LoadScene("game");
             }
+        }
+        else{
+            resetTimer=10f;
         }
 
     }
