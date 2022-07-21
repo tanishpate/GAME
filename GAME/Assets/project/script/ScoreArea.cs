@@ -8,8 +8,7 @@ public class ScoreArea : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		effectObject.SetActive(false);
-		
+		effectObject.SetActive(false);		
 	}
 	
 	// Update is called once per frame
@@ -18,6 +17,7 @@ public class ScoreArea : MonoBehaviour {
         {
 			effectObject.SetActive(true);
         }
-		
+
+		// effectObject.SetActive(false);	
 	}
 }

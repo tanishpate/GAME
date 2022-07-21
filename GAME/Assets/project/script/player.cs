@@ -8,18 +8,21 @@ public class player: MonoBehaviour
     public GameObject playerCamera;
 
     public float ballDistance = 2f;
+    public float distanceBetweenBall = 2f;
+    
     public float ballThrowingForce = 5f;
-
-	public bool holdingBall = true;
+ 
+	public bool holdingBall = false;
 
     // Use this for initialization
     void Start () {
-		ball.GetComponent<Rigidbody>().useGravity = false;
+		ball.GetComponent<Rigidbody>().useGravity = true;
 	}
 	
 	// Update is called once per frame
 	void Update ()
-    {
+    {   distanceBetweenBall= Vector3.Distance(playerCamera.transform.position,ball.transform.position);
+        
         if (holdingBall)
         {
             ball.transform.position = playerCamera.transform.position + playerCamera.transform.forward * ballDistance;
@@ -27,9 +30,15 @@ public class player: MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 holdingBall = false;
-                ball.ActivateTrail();
+                // ball.ActivateTrail();
                 ball.GetComponent<Rigidbody>().useGravity = true;
                 ball.GetComponent<Rigidbody>().AddForce(playerCamera.transform.forward * ballThrowingForce);
+            }
+        }else {
+            if(Input.GetMouseButtonDown(0) && distanceBetweenBall<4f){
+                holdingBall= true;
+                ball.GetComponent<Rigidbody>().useGravity= false;
+                ball.transform.position = playerCamera.transform.position + playerCamera.transform.forward * ballDistance;
             }
         }
 
